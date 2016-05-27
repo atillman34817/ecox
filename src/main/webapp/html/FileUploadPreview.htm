@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form>
+        <input id="uploadField" type="file" accept="image/*" multiple onchange="previewUpload()"><br>
+        <img id="imagePreview" src="../img/SaveIcon.png" alt="Image Preview"><br>
+        <button id="previousPreviewItem" type="button" disabled="disabled" onclick="previousPicturePreview()">&lt; </button>
+        <button id="nextPreviewItem" type="button" disabled="disabled" onclick="nextPicturePreview()">&gt; </button>
+        <br>
+        <input type="submit">
+    </form>
+    <script src="../js/previewUpload.js"></script>
+</body>
+</html>
