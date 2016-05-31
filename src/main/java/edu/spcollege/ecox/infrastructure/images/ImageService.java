@@ -17,23 +17,23 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Trevor
  */
 
-@Service
+//@Service
 public class ImageService {
     
-    @Resource
+    //@Resource
     private ImageRepository imageRepository;
     
-    @Transactional
-    public Image create(Image image) {
+    //@Transactional
+    public Image save(Image image) {
         return imageRepository.save(image);
     }
     
-    @Transactional
+    //@Transactional
     public Image findById(Long id) throws ImageNotFoundException {
         return getImage(id);
     }
     
-    @Transactional
+    //@Transactional
     public List<Image> findByLocation(Location location)
             throws ImageNotFoundException {
         
@@ -47,7 +47,7 @@ public class ImageService {
         return imagesFound;
     }
     
-    @Transactional
+    //@Transactional
     public List<Image> findByTime(Long start, Long end)
         throws ImageNotFoundException {
         
@@ -61,7 +61,7 @@ public class ImageService {
         return imagesFound;
     }
     
-    @Transactional(rollbackFor = ImageNotFoundException.class)
+    //@Transactional(rollbackFor = ImageNotFoundException.class)
     public Image update(Image image) throws ImageNotFoundException {
         //TODO: get image from database by arguments id
         //Image oldImage = getImage(image.getId());
@@ -70,7 +70,7 @@ public class ImageService {
         return image;
     }
     
-    @Transactional(rollbackFor = ImageNotFoundException.class)
+    //@Transactional(rollbackFor = ImageNotFoundException.class)
     public Image delete(long id) throws ImageNotFoundException {
         Image image = getImage(id);
         imageRepository.delete(id);
