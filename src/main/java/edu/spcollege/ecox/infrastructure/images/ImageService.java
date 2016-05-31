@@ -6,7 +6,7 @@
 package edu.spcollege.ecox.infrastructure.images;
 
 import edu.spcollege.ecox.domain.Image;
-import java.util.ArrayList;
+import edu.spcollege.ecox.domain.Location;
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
@@ -34,16 +34,11 @@ public class ImageService {
     }
     
     @Transactional
-    public List<Image> findByTags(String... tags)
-        throws ImageNotFoundException {
+    public List<Image> findByLocation(Location location)
+            throws ImageNotFoundException {
         
-        List<Image> imagesFound = new ArrayList<>();
-        Image image;
-        
-        for (String tag : tags) {
-            image = imageRepository.findByTag(tag);
-            imagesFound.add(image);
-        }
+        List<Image> imagesFound = 
+                imageRepository.findByLocation(location);
         
         if (imagesFound.isEmpty()) {
             throw new ImageNotFoundException();
