@@ -19,7 +19,7 @@
         <jstl.version>1.2</jstl.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
     </properties>
-     <repositories>
+    <repositories>
         <!-- TODO Currently thymeleaf-extras-java8time is a snaphost -->
         <repository>
             <id>sonatype-nexus-snapshots</id>
@@ -105,8 +105,8 @@
             <!-- Avoid issue #72 Could not initialize class org.thymeleaf.templateresolver.ServletContextTemplateResolver due to 'validation is not supported' -->
             <exclusions>
                 <exclusion>
-            		<artifactId>pull-parser</artifactId>
-            		<groupId>pull-parser</groupId>
+                    <artifactId>pull-parser</artifactId>
+                    <groupId>pull-parser</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -277,6 +277,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>6.1.14</version>
+                <configuration>
+                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                </configuration>
             </plugin>
         </plugins>
     </build>

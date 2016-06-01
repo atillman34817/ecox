@@ -10,4 +10,5 @@ package edu.spcollege.ecox.domain;
  *
  */
 public class Image {
+    
 }
