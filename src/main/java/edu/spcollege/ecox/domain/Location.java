@@ -8,7 +8,6 @@ package edu.spcollege.ecox.domain;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -19,19 +18,15 @@ import javax.persistence.Id;
 public class Location implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private final long id;
-    private final float latitude;
-    private final float longtitude;
+    @GeneratedValue
+    private long id;
+    private float latitude;
+    private float longtitude;
 
     public Location() {
-        this.id = 0;
-        this.latitude = 0;
-        this.longtitude = 0;
     }
 
-    public Location(long id, float latitude, float longtitude) {
-        this.id = id;
+    public Location(float latitude, float longtitude) {
         this.latitude = latitude;
         this.longtitude = longtitude;
     }
@@ -63,6 +58,10 @@ public class Location implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public long GetId() {
+        return this.id;
     }
 
     public float getLatitude() {
