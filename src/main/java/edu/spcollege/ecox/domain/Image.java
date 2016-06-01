@@ -8,7 +8,6 @@ package edu.spcollege.ecox.domain;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
@@ -20,25 +19,20 @@ import java.sql.Timestamp;
 public class Image implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private final long id;
+    @GeneratedValue
+    private long id;
 
-    private final String name;
-    private final Timestamp timestamp;
-    private final byte[] bytes;
+    private String name;
+    private Timestamp timestamp;
+    private byte[] bytes;
 
     public Image() {
-        this.id = 0;
-        this.name = "";
-        this.timestamp = null;
-        this.bytes = null;
     }
 
-    public Image(long id, byte[] bytes, String name, Timestamp timeStamp) {
+    public Image(byte[] bytes, String name, Timestamp timeStamp) {
         this.bytes = bytes;
         this.name = name;
         this.timestamp = timeStamp;
-        this.id = id;
     }
 
     @Override
