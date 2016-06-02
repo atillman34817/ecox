@@ -5,6 +5,8 @@
  */
 package edu.spcollege.ecox.data.collection.sensors;
 
+import edu.spcollege.ecox.sensor.TemperatureReading;
+import edu.spcollege.ecox.sensor.TemperatureSensor;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,7 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
-import edu.spcollege.ecox.data.collection.readers.Reader;
+import edu.spcollege.ecox.sensor.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Dictionary;

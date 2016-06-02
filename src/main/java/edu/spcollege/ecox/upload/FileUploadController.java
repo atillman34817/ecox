@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.spcollege.ecox.controllers;
+package edu.spcollege.ecox.upload;
 
-import edu.spcollege.ecox.domain.Image;
-import edu.spcollege.ecox.infrastructure.images.ImageService;
+import edu.spcollege.ecox.image.Image;
+import edu.spcollege.ecox.image.ImageService;
 import edu.spcollege.ecox.models.FileUpload;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class FileUploadController {
 
-    @Autowired
-    ImageService imageService;
+    //@Autowired
+    //ImageService imageService;
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String displayForm() {

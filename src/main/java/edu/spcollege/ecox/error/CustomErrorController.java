@@ -1,4 +1,4 @@
-package edu.spcollege.ecox.controllers;
+package edu.spcollege.ecox.error;
 
 import java.text.MessageFormat;
 
