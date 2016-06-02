@@ -5,10 +5,15 @@
  */
 package edu.spcollege.ecox.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Trevor
  */
+@Entity
 public class Location {
-    
+    @Id
+    private long Id;
 }
