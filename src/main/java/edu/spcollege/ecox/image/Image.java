@@ -5,6 +5,7 @@
  */
 package edu.spcollege.ecox.image;
 
+import edu.spcollege.ecox.shared.Location;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -25,6 +26,7 @@ public class Image implements Serializable {
     @Id
     @GeneratedValue
     private long id;
+    private Location location;
 
     private String name;
     private Timestamp timestamp;
@@ -33,10 +35,10 @@ public class Image implements Serializable {
     public Image() {
     }
 
-    public Image(byte[] bytes, String name, Timestamp timeStamp) {
+    public Image(byte[] bytes, String name, Timestamp timestamp) {
         this.bytes = bytes;
         this.name = name;
-        this.timestamp = timeStamp;
+        this.timestamp = timestamp;
     }
 
     @Override
@@ -82,5 +84,9 @@ public class Image implements Serializable {
 
     public Timestamp getTimestamp() {
         return timestamp;
+    }
+    
+    public Location getLocation() {
+        return location;
     }
 }
