@@ -12,11 +12,10 @@ import org.springframework.stereotype.Repository;
  *
  * @author Trevor
  */
-/*
+
 @Repository
-public interface SensorRepository 
-        extends JpaRepository<TemperatureSensor, Long>{
+public interface TemperatureReadingRepository 
+        extends JpaRepository<TemperatureReading, Long>{
     
     
 }
-*/
