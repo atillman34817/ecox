@@ -15,10 +15,9 @@ import org.springframework.stereotype.Repository;
  * @author Trevor
  */
 
-/*
+
 @Repository
 public interface ImageRepository extends JpaRepository<Image, Long>{
-    public List<Image> findByTimeStampBetween(long startTime, long endTime);
+    public List<Image> findByTimestampBetween(long startTime, long endTime);
     public List<Image> findByLocation(Location location);
 }
-*/

@@ -16,11 +16,11 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Trevor
  */
 
-/*
+
 @Service
 public class ImageService {
     
-    @Autowired
+    //@Autowired
     private ImageRepository imageRepository;
     
     @Transactional
@@ -52,7 +52,7 @@ public class ImageService {
         throws ImageNotFoundException {
         
         List<Image> imagesFound = 
-                imageRepository.findByTimeStampBetween(start, end);
+                imageRepository.findByTimestampBetween(start, end);
         
         if (imagesFound.isEmpty()) {
             throw new ImageNotFoundException();
@@ -85,4 +85,3 @@ public class ImageService {
         return image;
     }
 }
-*/public class ImageService{}
