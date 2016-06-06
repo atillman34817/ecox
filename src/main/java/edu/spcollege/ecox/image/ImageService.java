@@ -23,7 +23,7 @@ public class ImageService {
     
     private final String NOT_FOUND_ERROR = "Image not found!";
     
-    //@Autowired
+    @Autowired
     private ImageRepository imageRepository;
     
     @Transactional
@@ -66,8 +66,7 @@ public class ImageService {
     
     @Transactional(rollbackFor = FileNotFoundException.class)
     public Image update(Image image) throws FileNotFoundException {
-        //TODO: get image from database by arguments id
-        //Image oldImage = getImage(image.getId());
+        Image oldImage = getImage(image.getId());
         
         //TODO: update oldImage paremeters with the passed images parameters
         return image;
