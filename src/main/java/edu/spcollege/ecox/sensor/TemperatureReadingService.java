@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 public class TemperatureReadingService {
+    
+    // File not found exception message
     private final String NOT_FOUND_ERROR = "Temperature reading not found!";
     
     @Autowired
@@ -27,29 +29,28 @@ public class TemperatureReadingService {
     
     @Transactional(rollbackFor = FileNotFoundException.class)
     public TemperatureReading findById(Long id) throws FileNotFoundException {
-        return getReading(id);
+        TemperatureReading tr = temperatureReadingRepository.findOne(id);
+        if (tr == null) {
+            throw new FileNotFoundException(NOT_FOUND_ERROR);
+        }
+        return tr;
     }
     
+    /* TODO: finish TemperatureReading update when there's something to update
     @Transactional(rollbackFor = FileNotFoundException.class)
     public TemperatureReading update(TemperatureReading temperatureReading)
             throws FileNotFoundException {
-        //TODO: finish update after TemperatureReading has an ID
         return temperatureReading;
     }
+    */
     
     @Transactional(rollbackFor = FileNotFoundException.class)
     public TemperatureReading delete(long id)
             throws FileNotFoundException {
-        TemperatureReading temperatureReading = getReading(id);
-        return temperatureReading;
-    }
-    
-    private TemperatureReading getReading(Long id) 
-            throws FileNotFoundException {
-        TemperatureReading tempReading = temperatureReadingRepository.findOne(id);
-        if (tempReading == null) {
+        TemperatureReading tr = temperatureReadingRepository.findOne(id);
+        if (tr == null) {
             throw new FileNotFoundException(NOT_FOUND_ERROR);
         }
-        return tempReading;
+        return tr;
     }
 }

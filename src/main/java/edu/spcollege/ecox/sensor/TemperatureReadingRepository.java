@@ -16,6 +16,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TemperatureReadingRepository 
         extends JpaRepository<TemperatureReading, Long>{
-    
+    // for JpaRepository explanation, see ImageRepository
     
 }

@@ -18,6 +18,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ImageRepository extends JpaRepository<Image, Long>{
+    // JpaRepository interface handles basic CRUD functionality
+    // Create, Read, Update, and Delete functions in the database
+    
+    // add additional functions by defining functions with a specific
+    // naming scheme (see Spring-Data documentation)
     public List<Image> findByTimestampBetween(long startTime, long endTime);
     public List<Image> findByLocation(Location location);
 }

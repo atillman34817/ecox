@@ -21,69 +21,66 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ImageService {
     
+    // File not found exception message
     private final String NOT_FOUND_ERROR = "Image not found!";
     
-    @Autowired
+    @Autowired // injecting imageRepository for database functions
     private ImageRepository imageRepository;
     
-    @Transactional
+    @Transactional // annotation for anything that interacts with the database
     public Image save(Image image) {
         return imageRepository.save(image);
     }
     
-    @Transactional
+    @Transactional(rollbackFor = FileNotFoundException.class)
     public Image findById(Long id) throws FileNotFoundException {
-        return getImage(id);
-    }
-    
-    @Transactional
-    public List<Image> findByLocation(Location location)
-            throws FileNotFoundException {
-        
-        List<Image> imagesFound = 
-                imageRepository.findByLocation(location);
-        
-        if (imagesFound.isEmpty()) {
-            throw new FileNotFoundException(NOT_FOUND_ERROR);
-        }
-        
-        return imagesFound;
-    }
-    
-    @Transactional
-    public List<Image> findByTime(Long start, Long end)
-        throws FileNotFoundException {
-        
-        List<Image> imagesFound = 
-                imageRepository.findByTimestampBetween(start, end);
-        
-        if (imagesFound.isEmpty()) {
-            throw new FileNotFoundException();
-        }
-        
-        return imagesFound;
-    }
-    
-    @Transactional(rollbackFor = FileNotFoundException.class)
-    public Image update(Image image) throws FileNotFoundException {
-        Image oldImage = getImage(image.getId());
-        
-        //TODO: update oldImage paremeters with the passed images parameters
-        return image;
-    }
-    
-    @Transactional(rollbackFor = FileNotFoundException.class)
-    public Image delete(long id) throws FileNotFoundException {
-        Image image = getImage(id);
-        imageRepository.delete(id);
-        return image;
-    }
-    
-    private Image getImage(Long id) throws FileNotFoundException {
         Image image = imageRepository.findOne(id);
         if (image == null) {
             throw new FileNotFoundException(NOT_FOUND_ERROR);
         }
+        return image;
+    }
+    
+    @Transactional(rollbackFor = FileNotFoundException.class)
+    public List<Image> findByLocation(Location location)
+            throws FileNotFoundException {
+        
+        List<Image> images = imageRepository.findByLocation(location);        
+        if (images.isEmpty()) {
+            throw new FileNotFoundException(NOT_FOUND_ERROR);
+        }        
+        return images;
+    }
+    
+    @Transactional(rollbackFor = FileNotFoundException.class)
+    public List<Image> findByTime(Long start, Long end)
+        throws FileNotFoundException {
+        
+        List<Image> images = imageRepository.findByTimestampBetween(start, end);        
+        if (images.isEmpty()) {
+            throw new FileNotFoundException();
+        }        
+        return images;
+    }
+    
+    /*
+     *TODO: update oldImage paremeters with the passed images parameters
+    @Transactional(rollbackFor = FileNotFoundException.class)
+    public Image update(Image image) throws FileNotFoundException {
+        Image oldImage = imageRepository.findOne(image.getId());
+        
+        
+        return image;
+    }
+    */
+    
+    @Transactional(rollbackFor = FileNotFoundException.class)
+    public Image delete(long id) throws FileNotFoundException {
+        Image image = imageRepository.findOne(id);
+        if (image == null) {
+            throw new FileNotFoundException(NOT_FOUND_ERROR);
+        }
+        imageRepository.delete(id);
         return image;
     }
 }
