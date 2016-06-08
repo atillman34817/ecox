@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>File Upload</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form action="#" th:action="@{/savefiles}" method="post">
+        <input id="uploadField" type="file" accept="image/*" multiple onchange="previewUpload()"><br>
+        <img id="imagePreview" src="SaveIcon.png" alt="Image Preview"><br>
+        <button id="previousPreviewItem" type="button" disabled="disabled" onclick="previousPicturePreview()">&lt; </button>
+        <button id="nextPreviewItem" type="button" disabled="disabled" onclick="nextPicturePreview()">&gt; </button>
+        <br>
+        <input type="submit">
+    </form>
+    <script src="previewUpload.js"></script>
+</body>
+</html>
