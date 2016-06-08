@@ -33,9 +33,9 @@ public class FileUploadController {
     ImageService imageService;
     
     
-    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    @RequestMapping(value = "/fileupload", method = RequestMethod.GET)
     public String displayForm() {
-        return "fileupload";
+        return "fileupload/fileupload";
     }
     
     @RequestMapping(value = "/savefiles", method = RequestMethod.POST)
@@ -55,6 +55,6 @@ public class FileUploadController {
                 }
             }
         }
-        return "fileuploadsuccess";
+        return "fileupload/success";
     }
 }
