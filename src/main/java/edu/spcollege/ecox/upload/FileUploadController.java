@@ -5,10 +5,15 @@
  */
 package edu.spcollege.ecox.upload;
 
+import com.drew.imaging.ImageProcessingException;
 import edu.spcollege.ecox.image.Image;
+import edu.spcollege.ecox.image.ImageDataExtractor;
 import edu.spcollege.ecox.image.ImageService;
 import edu.spcollege.ecox.models.FileUpload;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +29,13 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class FileUploadController {
 
-    //@Autowired
-    //ImageService imageService;
-
+    @Autowired
+    ImageService imageService;
+    
+    
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String displayForm() {
-        return "uploadfile";
+        return "fileupload";
     }
     
     @RequestMapping(value = "/savefiles", method = RequestMethod.POST)
@@ -38,12 +44,17 @@ public class FileUploadController {
         List<MultipartFile> files = fileUploads.getFiles();
         Image image;
 
+        ImageDataExtractor imageDataExtractor = new ImageDataExtractor();
         if (files != null && files.size() > 0) {
             for (MultipartFile multipartFile : files) {
-                //image = new Image(multipartFile.getBytes(), multipartFile.getOriginalFilename());
-                //imageService.save(image);
+                try {
+                    image = new Image(multipartFile.getBytes(), multipartFile.getOriginalFilename(), imageDataExtractor.getTimestamp(multipartFile));
+                    imageService.save(image);
+                } catch (IOException | ImageProcessingException ex) {
+                    Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
-        return "";
+        return "fileuploadsuccess";
     }
 }
