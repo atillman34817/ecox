@@ -6,11 +6,23 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>File Uploaded</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        ${message}
+        <p>Uploaded Files:</p>
+        <table>
+            <tr th:each="file : ${fileNamesSucceeded}">
+                <td th:text="${file}">file ...</td>
+            </tr>
+        </table>
+        
+        <p>Failed Files:</p>
+        <table>
+            <tr th:each="file : ${fileNamesFailed}">
+                <td th:text="${file}">file ...</td>
+            </tr>
+        </table>
     </body>
 </html>

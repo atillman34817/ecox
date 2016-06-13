@@ -11,6 +11,7 @@ import edu.spcollege.ecox.image.ImageDataExtractor;
 import edu.spcollege.ecox.image.ImageService;
 import edu.spcollege.ecox.models.FileUpload;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,30 +32,43 @@ public class FileUploadController {
 
     @Autowired
     ImageService imageService;
-    
-    
-    @RequestMapping(value = "/fileupload", method = RequestMethod.GET)
-    public String displayForm() {
+
+    @RequestMapping(value = "fileupload", method = RequestMethod.GET)
+    public String displayForm(Model model) {
+        model.addAttribute(new FileUpload());
         return "fileupload/fileupload";
     }
-    
-    @RequestMapping(value = "/savefiles", method = RequestMethod.POST)
+
+    @RequestMapping(value = "uploadfile", method = RequestMethod.POST)
     public String save(@ModelAttribute("uploadFile") FileUpload fileUploads, Model map) {
 
         List<MultipartFile> files = fileUploads.getFiles();
+        List<String> fileNamesSucceeded = new ArrayList<>();
+        List<String> fileNamesFailed = new ArrayList<>();
+
         Image image;
 
         ImageDataExtractor imageDataExtractor = new ImageDataExtractor();
+
         if (files != null && files.size() > 0) {
             for (MultipartFile multipartFile : files) {
                 try {
+                    fileNamesSucceeded.add("successfile");
                     image = new Image(multipartFile.getBytes(), multipartFile.getOriginalFilename(), imageDataExtractor.getTimestamp(multipartFile));
                     imageService.save(image);
                 } catch (IOException | ImageProcessingException ex) {
+                    fileNamesFailed.add("failFile");
                     Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+        } else {
+            fileNamesFailed.add("Initial check if files != null and file.size > 0 returned false");
         }
+        fileNamesSucceeded.add("This should always be added to successful files");
+        fileNamesFailed.add("This should always be added to failed files");
+
+        map.addAttribute("fileNamesSucceeded", fileNamesSucceeded);
+        map.addAttribute("fileNamesFailed", fileNamesFailed);
         return "fileupload/success";
     }
 }
