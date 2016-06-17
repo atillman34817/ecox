@@ -1,4 +1,5 @@
- <!DOCTYPE html>   
+ 
+<!DOCTYPE html>   
  <html>
     <head>
         <title>EcoX File Upload</title>
@@ -71,10 +72,31 @@
                     </div>   
                     <div class="col-sm-12 col-md-10 col-md-offset-2 main"></br>
                         <h1 class="page-header">File Upload</h1>
-                    <form role="form" th:action="@{/uploadfile}" method="post" th:object="${fileUpload}">
-                        <input type="file" name="files" th:field="*{files}"/>
-                        <input type="submit" />
+                    
+                    <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                        <label for="file">Select a file to upload</label>
+                        <input type="file" name="file" id="file"/>
+                        <input type="submit" value="Upload" />
                     </form>
+                    
+                        <!-- upload with multiple files 
+                    <form:form modelAttribute="uploadForm" method="POST" action="" enctype="multipart/form-data">
+         
+                        Description:
+                        <br>
+                        <form:input path="description" style="width:300px;"/>                
+                        <br/><br/>                 
+     
+                        File to upload (1): <form:input path="fileDatas" type="file"/><br />      
+                        File to upload (2): <form:input path="fileDatas" type="file"/><br />    
+                        File to upload (3): <form:input path="fileDatas" type="file"/><br />    
+                        File to upload (4): <form:input path="fileDatas" type="file"/><br />    
+                        File to upload (5): <form:input path="fileDatas" type="file"/><br />    
+         
+                        <input type="submit" value="Upload">
+          
+                    </form:form>-->
+     
                     </div> 
     
          </div>

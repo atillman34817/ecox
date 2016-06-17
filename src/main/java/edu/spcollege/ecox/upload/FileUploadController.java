@@ -6,10 +6,11 @@
 package edu.spcollege.ecox.upload;
 
 import com.drew.imaging.ImageProcessingException;
+import edu.spcollege.ecox.Application;
 import edu.spcollege.ecox.image.Image;
 import edu.spcollege.ecox.image.ImageDataExtractor;
 import edu.spcollege.ecox.image.ImageService;
-import edu.spcollege.ecox.models.FileUpload;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -35,40 +37,35 @@ public class FileUploadController {
 
     @RequestMapping(value = "fileupload", method = RequestMethod.GET)
     public String displayForm(Model model) {
-        model.addAttribute(new FileUpload());
+        model.addAttribute("uploadForm", new FileUpload());
         return "fileupload/fileupload";
     }
 
-    @RequestMapping(value = "uploadfile", method = RequestMethod.POST)
-    public String save(@ModelAttribute("uploadFile") FileUpload fileUploads, Model map) {
-
-        List<MultipartFile> files = fileUploads.getFiles();
-        List<String> fileNamesSucceeded = new ArrayList<>();
-        List<String> fileNamesFailed = new ArrayList<>();
-
-        Image image;
-
+    
+     @RequestMapping(value = "upload", method = RequestMethod.POST) 
+    public String importFile(@RequestParam("file") MultipartFile locationImageFile) throws IOException { 
+        String pageTitle = "Upload file";
+        
         ImageDataExtractor imageDataExtractor = new ImageDataExtractor();
 
-        if (files != null && files.size() > 0) {
-            for (MultipartFile multipartFile : files) {
-                try {
-                    fileNamesSucceeded.add("successfile");
-                    image = new Image(multipartFile.getBytes(), multipartFile.getOriginalFilename(), imageDataExtractor.getTimestamp(multipartFile));
-                    imageService.save(image);
-                } catch (IOException | ImageProcessingException ex) {
-                    fileNamesFailed.add("failFile");
-                    Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } else {
-            fileNamesFailed.add("Initial check if files != null and file.size > 0 returned false");
+        try {
+            Image img = new Image(locationImageFile.getBytes(), 
+                                  locationImageFile.getOriginalFilename(), 
+                                  imageDataExtractor.getTimestamp(locationImageFile));
+            //imageService.save(img);
+        } catch (IOException | ImageProcessingException ex) {
+             Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        fileNamesSucceeded.add("This should always be added to successful files");
-        fileNamesFailed.add("This should always be added to failed files");
+        
+        // Redirect to a successful upload page 
+        return "redirect:uploadSuccess"; 
+    } 
 
-        map.addAttribute("fileNamesSucceeded", fileNamesSucceeded);
-        map.addAttribute("fileNamesFailed", fileNamesFailed);
+    @RequestMapping(value = "/uploadSuccess")
+    public String success(Model model) {
+        String pageTitle = "File uploaded";
+        //BreadCrumbs.set(model, pageTitle);
         return "fileupload/success";
     }
+
 }

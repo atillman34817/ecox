@@ -41,11 +41,15 @@ public class ImageDataExtractor {
     public Timestamp getTimestamp(MultipartFile multipartFile) 
             throws IOException, ImageProcessingException {
         
-        // get original date from exif metadata and convert to timestamp
-        Metadata metadata = getMetadata(multipartFile);
-        ExifSubIFDDirectory exifDir = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-        Timestamp timestamp = new Timestamp(exifDir.getDateOriginal().getTime());
-        
+        Timestamp timestamp;
+        try{
+            // get original date from exif metadata and convert to timestamp
+            Metadata metadata = getMetadata(multipartFile);
+            ExifSubIFDDirectory exifDir = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
+            timestamp = new Timestamp(exifDir.getDateOriginal().getTime());
+        } catch (NullPointerException | IOException | ImageProcessingException ex){
+            timestamp = null;
+        }
         
         return timestamp;
     }
