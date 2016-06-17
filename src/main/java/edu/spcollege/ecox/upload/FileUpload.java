@@ -29,11 +29,11 @@ public class FileUpload {
         this.description = description;
     }
  
-    public CommonsMultipartFile[] getFileDatas() {
+    public CommonsMultipartFile[] getFiles() {
         return fileDatas;
     }
  
-    public void setFileDatas(CommonsMultipartFile[] fileDatas) {
+    public void setFiles(CommonsMultipartFile[] fileDatas) {
         this.fileDatas = fileDatas;
     }
 }
