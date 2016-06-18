@@ -1,5 +1,5 @@
-
 package edu.spcollege.ecox.config;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,12 +22,12 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import edu.spcollege.ecox.Application;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 /**
  *
  * @author atillman
  */
-
 @Configuration
 class WebMvcConfig extends WebMvcConfigurationSupport {
 
@@ -80,6 +80,12 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
         return thymeleafViewResolver;
     }
 
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        return multipartResolver;
+    }
+
     @Override
     public Validator getValidator() {
         LocalValidatorFactoryBean validator = new LocalValidatorFactoryBean();
@@ -98,10 +104,12 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
     }
 
     /**
-     * Handles favicon.ico requests assuring no <code>404 Not Found</code> error is returned.
+     * Handles favicon.ico requests assuring no <code>404 Not Found</code> error
+     * is returned.
      */
     @Controller
     static class FaviconController {
+
         @RequestMapping("favicon.ico")
         String favicon() {
             return "forward:/resources/images/favicon.ico";

@@ -19,7 +19,7 @@ public class FileUpload {
   private String description;
     
     // Upload files.
-    private CommonsMultipartFile[] fileDatas;
+    private CommonsMultipartFile[] files;
  
     public String getDescription() {
         return description;
@@ -30,10 +30,10 @@ public class FileUpload {
     }
  
     public CommonsMultipartFile[] getFiles() {
-        return fileDatas;
+        return files;
     }
  
-    public void setFiles(CommonsMultipartFile[] fileDatas) {
-        this.fileDatas = fileDatas;
+    public void setFiles(CommonsMultipartFile[] files) {
+        this.files = files;
     }
 }

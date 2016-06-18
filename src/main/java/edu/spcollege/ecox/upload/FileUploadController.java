@@ -35,31 +35,39 @@ public class FileUploadController {
     @Autowired
     ImageService imageService;
 
-    @RequestMapping(value = "fileupload", method = RequestMethod.GET)
+    @RequestMapping(value = "/fileupload", method = RequestMethod.GET)
     public String displayForm(Model model) {
         model.addAttribute("uploadForm", new FileUpload());
         return "fileupload/fileupload";
     }
 
-    
-     @RequestMapping(value = "upload", method = RequestMethod.POST) 
-    public String importFile(@RequestParam("file") MultipartFile locationImageFile) throws IOException { 
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public String importFile(@ModelAttribute("uploadForm") FileUpload uploadedFiles, Model model) throws IOException {
         String pageTitle = "Upload file";
-        
+        List<String> fileNamesSucceeded = new ArrayList<>();
+        List<String> fileNamesFailed = new ArrayList<>();
+
         ImageDataExtractor imageDataExtractor = new ImageDataExtractor();
 
-        try {
-            Image img = new Image(locationImageFile.getBytes(), 
-                                  locationImageFile.getOriginalFilename(), 
-                                  imageDataExtractor.getTimestamp(locationImageFile));
-            //imageService.save(img);
-        } catch (IOException | ImageProcessingException ex) {
-             Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
+        for (MultipartFile locationImageFile : uploadedFiles.getFiles()) {
+            try {
+                Image img = new Image(locationImageFile.getBytes(),
+                        locationImageFile.getOriginalFilename(),
+                        imageDataExtractor.getTimestamp(locationImageFile));
+                fileNamesSucceeded.add(locationImageFile.getOriginalFilename());
+                //imageService.save(img);
+            } catch (IOException | ImageProcessingException ex) {
+                fileNamesFailed.add(locationImageFile.getOriginalFilename());
+                Logger.getLogger(FileUploadController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
-        // Redirect to a successful upload page 
-        return "redirect:uploadSuccess"; 
-    } 
+
+        model.addAttribute("fileNamesSucceeded", fileNamesSucceeded);
+        model.addAttribute("fileNamesFailed", fileNamesFailed);
+        // Redirect to a successful upload page
+        return "fileupload/success";
+        //return "redirect:uploadSuccess";
+    }
 
     @RequestMapping(value = "/uploadSuccess")
     public String success(Model model) {
