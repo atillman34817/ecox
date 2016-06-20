@@ -63,17 +63,6 @@ public class ImageService {
         return images;
     }
     
-    /*
-     *TODO: update oldImage paremeters with the passed images parameters
-    @Transactional(rollbackFor = FileNotFoundException.class)
-    public Image update(Image image) throws FileNotFoundException {
-        Image oldImage = imageRepository.findOne(image.getId());
-        
-        
-        return image;
-    }
-    */
-    
     @Transactional(rollbackFor = FileNotFoundException.class)
     public Image delete(long id) throws FileNotFoundException {
         Image image = imageRepository.findOne(id);

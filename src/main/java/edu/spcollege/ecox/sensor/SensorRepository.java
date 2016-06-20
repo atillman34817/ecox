@@ -5,11 +5,15 @@
  */
 package edu.spcollege.ecox.sensor;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author Trevor
  */
-public enum ReadingType {
-    Temperature,
-    Light
+
+@Repository
+public interface SensorRepository extends JpaRepository<Sensor, Long> {
+    
 }

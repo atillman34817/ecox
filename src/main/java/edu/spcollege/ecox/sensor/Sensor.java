@@ -6,29 +6,38 @@
 package edu.spcollege.ecox.sensor;
 
 import edu.spcollege.ecox.shared.Location;
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Trevor
  */
-public class Sensor {
+@Entity
+public class Sensor implements Serializable {
     
     @Id
     @GeneratedValue
-    private long id;
+    private long sensorId;
+    
     private String name;
     private Location location;
-    private List <ReadingType> readingTypes;
+    @OneToMany(targetEntity=Reading.class, mappedBy="sensor")
+    private List<Reading> readings;
     
-    public Sensor(String name, Location location, ReadingType... readingTypes) {
+    protected Sensor(){}
+    
+    public Sensor(String name, Location location) {
         this.name = name;
         this.location = location;
-        for (ReadingType type : readingTypes) {
-            this.readingTypes.add(type);
-        }
+    }
+    
+    public long getId() {
+        return sensorId;
     }
 
     public String getName() {
@@ -46,16 +55,8 @@ public class Sensor {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    public List<ReadingType> getReadingTypes() {
-        return readingTypes;
-    }
     
-    public void addReadingType(ReadingType type) {
-        this.readingTypes.add(type);
-    }
-    
-    public void removeReadingType(ReadingType type) {
-        this.readingTypes.remove(type);
+    public List<Reading> getReadings() {
+        return readings;
     }
 }
