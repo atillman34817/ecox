@@ -5,19 +5,26 @@
     Author     : Douglas Jones 
 -->
 
-<html>
-    <head >
-        <title>EcoX Dashboard</title>
-        <link rel="import" href="../fragments/header.html">
-    </head>
-    <body>
-        <link rel="import" href="../fragments/horizontalNav.html">
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+             <title>EcoX Home Page</title>
+             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+             <!-- Optional Bootstrap theme -->
+
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+             <link rel="stylesheet" th:href="@{../../resources/css/dashboard.css}" href="../../resources/css/dashboard.css" >
+    </head>
+    <body> 
+        <div th:replace="fragments/horizontalNav :: horizontalNav"></div>
+        </br>
+        </br>
             <div class="container">
                 <div class="row">
                     </br>
                     <div class="col-sm-3 col-md-2 sidebar">
-                        <link rel="import" href="../fragments/sidebarNav.html">
+                        <div th:replace="fragments/sidebarNav :: sidebarNav"></div>
                     </div>   
                     <div class="col-sm-12 col-md-10 col-md-offset-2 main"></br>
                         <h1 class="page-header">Dashboard</h1>
