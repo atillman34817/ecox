@@ -14,7 +14,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
  *
  * @author brad
  */
-public class FileUpload {
+public class FileUploadForm {
 
   private String description;
     
