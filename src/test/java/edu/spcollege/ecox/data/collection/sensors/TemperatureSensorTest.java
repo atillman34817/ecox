@@ -56,7 +56,10 @@ public class TemperatureSensorTest {
     @After
     public void tearDown() {
     }
-
+    
+    /**
+     * Sensors no longer capture from reader or convert readings
+     * Code left for reference.
     @org.junit.Test
     public void testCaptureReadsFromSDCard() {
         
@@ -72,4 +75,5 @@ public class TemperatureSensorTest {
         
         assertEquals(3, sensorReadings.size());
     }
+    */
 }

@@ -36,14 +36,6 @@ public class TemperatureReadingService {
         return tr;
     }
     
-    /* TODO: finish TemperatureReading update when there's something to update
-    @Transactional(rollbackFor = FileNotFoundException.class)
-    public TemperatureReading update(TemperatureReading temperatureReading)
-            throws FileNotFoundException {
-        return temperatureReading;
-    }
-    */
-    
     @Transactional(rollbackFor = FileNotFoundException.class)
     public TemperatureReading delete(long id)
             throws FileNotFoundException {
