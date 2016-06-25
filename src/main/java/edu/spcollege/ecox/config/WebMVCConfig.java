@@ -93,10 +93,12 @@ class WebMvcConfig extends WebMvcConfigurationSupport {
         return validator;
     }
 
-    @Override
+    //@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(RESOURCES_HANDLER).addResourceLocations(RESOURCES_LOCATION);
     }
+    
+    
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

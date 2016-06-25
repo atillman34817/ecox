@@ -13,16 +13,20 @@ and open the template in the editor.
     <body>
         <p>Uploaded Files:</p>
         <table>
-            <tr th:each="file : ${fileNamesSucceeded}">
-                <td th:text="${file}">file ...</td>
-            </tr>
-        </table>
-        
-        <p>Failed Files:</p>
-        <table>
-            <tr th:each="file : ${fileNamesFailed}">
-                <td th:text="${file}">file ...</td>
-            </tr>
-        </table>
-    </body>
+            <tr th:each="entry : ${map}">
+            <div th:if="${entry.value}">
+                <td th:text="${entry.key}">file name</td>
+            </div>
+        </tr>
+    </table>
+
+    <p>Failed Files:</p>
+    <table>
+        <tr th:each="entry : ${map}">
+        <div th:unless="${entry.value}">
+            <td th:text="${entry.key}">file name</td>
+        </div>
+    </tr>
+</table>
+</body>
 </html>
