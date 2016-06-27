@@ -8,6 +8,7 @@ package edu.spcollege.ecox.upload;
 import com.drew.imaging.ImageProcessingException;
 import edu.spcollege.ecox.image.Image;
 import edu.spcollege.ecox.image.ImageDataExtractor;
+import edu.spcollege.ecox.shared.Location;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,8 +34,9 @@ public class ImageUploadStrategy implements UploadStrategy {
             try {
                 Image img = new Image(locationImageFile.getBytes(),
                         locationImageFile.getOriginalFilename(),
-                        imageDataExtractor.getTimestamp(locationImageFile));
-                        fileStatus.put(locationImageFile.getOriginalFilename(), true);
+                        imageDataExtractor.getTimestamp(locationImageFile),
+                        new Location(0,0));
+                fileStatus.put(locationImageFile.getOriginalFilename(), true);
                 //imageService.save(img);
             } catch (IOException | ImageProcessingException ex) {
                 fileStatus.put(locationImageFile.getOriginalFilename(), false);

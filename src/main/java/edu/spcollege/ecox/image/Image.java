@@ -35,10 +35,11 @@ public class Image implements Serializable {
     public Image() {
     }
 
-    public Image(byte[] bytes, String name, Timestamp timestamp) {
+    public Image(byte[] bytes, String name, Timestamp timestamp, Location location) {
         this.bytes = bytes;
         this.name = name;
         this.timestamp = timestamp;
+        this.location = location;
     }
 
     @Override
