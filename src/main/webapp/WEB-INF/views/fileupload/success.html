@@ -1,24 +1,36 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>File Uploaded</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <title>EcoX Home Page</title>
+             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+             <!-- Optional Bootstrap theme -->
+
+             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+             <link rel="stylesheet" type="text/css" media="all"
+                   href="../../resources/css/dashboard.css" th:href="@{/resources/css/dashboard.css}" >
     </head>
-    <body>
-        <p>Uploaded Files:</p>
+    <body> 
+        <div th:replace="fragments/header :: header"></div>
+        </br>
+        
+            <div class="container">
+                <div class="row">
+                 
+                    <div class="col-sm-3 col-md-2 sidebar">
+                        <div th:replace="fragments/sidebarNav :: sidebarNav"></div>
+                    </div>   
+        <div class="col-sm-12 col-md-10 col-md-offset-2 main"></br>
+                        <h1 class="page-header">Upload Complete</h1>
+                        
+                        <p>Uploaded Files:</p>
         <table>
             <tr th:each="entry : ${map}">
             <div th:if="${entry.value}">
                 <td th:text="${entry.key}">file name</td>
             </div>
         </tr>
-    </table>
+        </table></br>
 
     <p>Failed Files:</p>
     <table>
@@ -28,5 +40,21 @@ and open the template in the editor.
         </div>
     </tr>
 </table>
+    </br></br></br>
+     <div th:replace="fragments/footer :: footer"></div>
+                    </div>    
+                    
+                </div>       
+            <hr>
+            
+     
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
 </body>
 </html>

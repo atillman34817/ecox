@@ -18,4 +18,10 @@ public class HomeController {
 	public String index(Principal principal) {
 		return principal != null ? "home/homeSignedIn" : "home/homeNotSignedIn";
 	}
+        
+        @RequestMapping(value = "/homeSignedIn")
+         public String dashboard() {
+        return "home/homeSignedIn";
+    
+        }
 }
