@@ -5,12 +5,13 @@
  */
 package edu.spcollege.ecox.sensor;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
  *
  * @author atillman
  */
-public interface Reader {
-    List<String> read();
+public interface Reader<S> {
+    List<S> read(InputStream inputStream);
 }

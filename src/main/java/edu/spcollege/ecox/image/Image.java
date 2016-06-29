@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Timestamp;
+import javax.persistence.Lob;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Image implements Serializable {
 
     private String name;
     private Timestamp timestamp;
+    @Lob
     private byte[] bytes;
 
     public Image() {

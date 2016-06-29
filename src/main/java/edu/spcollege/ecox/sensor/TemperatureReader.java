@@ -5,6 +5,7 @@
  */
 package edu.spcollege.ecox.sensor;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,13 +13,13 @@ import java.util.List;
  *
  * @author Student
  */
-public class TemperatureReader implements Reader {
+public class TemperatureReader implements Reader<TemperatureReading> {
+    
     @Override
-    public List<String> read() {
+    public List<TemperatureReading> read(InputStream inputStream) {
         
-        List<String> temperatureReadings = new ArrayList<>();
-        
-        
+        List<TemperatureReading> temperatureReadings = new ArrayList<>();
+                
         
         return temperatureReadings;
     }

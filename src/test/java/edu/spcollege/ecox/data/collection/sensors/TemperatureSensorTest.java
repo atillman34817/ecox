@@ -48,7 +48,7 @@ public class TemperatureSensorTest {
         mockedReader = mock(Reader.class);
         List<String> readings = Arrays.asList("04/02/2016 20:27:05,30", 
                 "04/02/2016 20:28:05,40", "04/02/2016 20:29:05,50");
-        when(mockedReader.read()).thenReturn(readings);
+//        when(mockedReader.read()).thenReturn(readings);
         
         sensor = new TemperatureSensor();
     }

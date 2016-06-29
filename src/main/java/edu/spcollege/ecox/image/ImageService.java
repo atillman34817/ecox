@@ -46,24 +46,22 @@ public class ImageService {
     public List<Image> findByLocation(Location location)
             throws FileNotFoundException {
         
-        //List<Image> images = imageRepository.findByLocation(location);        
-        //if (images.isEmpty()) {
-            //throw new FileNotFoundException(NOT_FOUND_ERROR);
-        //}        
-        //return images;
-        return new ArrayList<Image>();
+        List<Image> images = imageRepository.findByLocation(location);        
+        if (images.isEmpty()) {
+            throw new FileNotFoundException(NOT_FOUND_ERROR);
+        }        
+        return images;
     }
     
     @Transactional(rollbackFor = FileNotFoundException.class)
     public List<Image> findByTime(Long start, Long end)
         throws FileNotFoundException {
         
-        //List<Image> images = imageRepository.findByTimestampBetween(start, end);        
-        //if (images.isEmpty()) {
-        //    throw new FileNotFoundException();
-        //}        
-        //return images;
-        return new ArrayList<Image>();
+        List<Image> images = imageRepository.findByTimestampBetween(start, end);        
+        if (images.isEmpty()) {
+            throw new FileNotFoundException();
+        }        
+        return images;
     }
     
     @Transactional(rollbackFor = FileNotFoundException.class)

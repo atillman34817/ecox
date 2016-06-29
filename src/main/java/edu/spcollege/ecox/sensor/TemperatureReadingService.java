@@ -7,13 +7,14 @@ package edu.spcollege.ecox.sensor;
 
 import java.io.FileNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Trevor
  */
-
+@Service
 public class TemperatureReadingService {
     
     // File not found exception message
