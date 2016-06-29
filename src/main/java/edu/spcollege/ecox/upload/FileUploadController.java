@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class FileUploadController {
 
     @Autowired
-    ImageService imageService;
-
+    private UploadStrategyFactory uploadStrategy;
+    
     @RequestMapping(value = "/fileupload", method = RequestMethod.GET)
     public String displayForm(Model model) {
         model.addAttribute("uploadForm", new FileUploadForm());
@@ -38,7 +38,7 @@ public class FileUploadController {
         String pageTitle = "Upload file";
 
         try {
-            UploadStrategy strategy = UploadStrategyFactory.create(fileUploads.getFiles()[0].getContentType());
+            UploadStrategy strategy = uploadStrategy.create(fileUploads.getFiles()[0].getContentType());
             model.addAttribute("map", strategy.upload(fileUploads));
         } catch (Exception ex) {
             ex.printStackTrace();

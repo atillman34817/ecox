@@ -7,6 +7,7 @@ package edu.spcollege.ecox.image;
 
 import edu.spcollege.ecox.shared.Location;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,22 +46,24 @@ public class ImageService {
     public List<Image> findByLocation(Location location)
             throws FileNotFoundException {
         
-        List<Image> images = imageRepository.findByLocation(location);        
-        if (images.isEmpty()) {
-            throw new FileNotFoundException(NOT_FOUND_ERROR);
-        }        
-        return images;
+        //List<Image> images = imageRepository.findByLocation(location);        
+        //if (images.isEmpty()) {
+            //throw new FileNotFoundException(NOT_FOUND_ERROR);
+        //}        
+        //return images;
+        return new ArrayList<Image>();
     }
     
     @Transactional(rollbackFor = FileNotFoundException.class)
     public List<Image> findByTime(Long start, Long end)
         throws FileNotFoundException {
         
-        List<Image> images = imageRepository.findByTimestampBetween(start, end);        
-        if (images.isEmpty()) {
-            throw new FileNotFoundException();
-        }        
-        return images;
+        //List<Image> images = imageRepository.findByTimestampBetween(start, end);        
+        //if (images.isEmpty()) {
+        //    throw new FileNotFoundException();
+        //}        
+        //return images;
+        return new ArrayList<Image>();
     }
     
     @Transactional(rollbackFor = FileNotFoundException.class)

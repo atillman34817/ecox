@@ -5,15 +5,24 @@
  */
 package edu.spcollege.ecox.upload;
 
+import edu.spcollege.ecox.image.ImageService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author Student
  */
+@Component
 public class UploadStrategyFactory {
     
-    public static UploadStrategy create(String fileExtension){
+    @Autowired
+    private ImageUploadStrategy imageStrategy;
+    
+    
+    public UploadStrategy create(String fileExtension){
         if (fileExtension.equalsIgnoreCase("image/jpeg"))
-            return new ImageUploadStrategy();
+            return imageStrategy;
         
         return null;
     }
