@@ -16,20 +16,25 @@
              <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
              <link rel="stylesheet" type="text/css" media="all"
                    href="../../resources/css/dashboard.css" th:href="@{/resources/css/dashboard.css}" >
+             <!-- Leaflet interactive map -->
+             <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     </head>
     <body> 
         <div th:replace="fragments/header :: header"></div>
-        </br>
+        <br>
         
             <div class="container">
                 <div class="row">
                  
-                    <div class="col-sm-3 col-md-2 sidebar">
-                        <div th:replace="fragments/sidebarNav :: sidebarNav"></div>
-                    </div>   
+                    <!-- Import sidebar navigation-->
+                    <div th:replace="fragments/sidebarNav :: sidebarNav"></div>
+                       
                     <div class="col-sm-12 col-md-10 col-md-offset-2 main"></br>
                         <h1 class="page-header">Dashboard</h1>
-
+                        
+                        <!-- Import Map-->
+                        <div id="mapid"></div><br>
+                        
                         <div class="row placeholders">
                           <div class="col-xs-6 col-sm-3 placeholder">
                             <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
@@ -185,16 +190,19 @@
                     </div>    
                     
                 </div> 
-                <!-- import footerr -->
+                <!-- import footer -->
                  <div th:replace="fragments/footer :: footer"></div>
             <hr>
             
      
         </div>
-        
+        <!-- Import JQuery Javascript-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+        <!--Import Bootstrap Javascript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+        <!-- Import Leaflet Javascript-->
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <!-- Import dashboardMap.js-->
+        <script type="text/javascript" th:src="@{resources/js/dashboardMap.js}"></script>
     </body>
 </html>
