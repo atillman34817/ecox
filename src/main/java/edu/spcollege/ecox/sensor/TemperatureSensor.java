@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -63,26 +63,4 @@ public class TemperatureSensor {
     public void setCurrentLocation(Location currentLocation) {
         this.currentLocation = currentLocation;
     }
-    
-    
-    
-    /**
-     * Old string to temperature reading conversion that should be implemented
-     * within the CSVreader.
-     * Code kept for reference.
-    public void captureFrom(Reader reader) {
-        List<String> data = reader.read();
-        convertReadingsToTemperatureReading(data);
-    }
-    
-    private void convertReadingsToTemperatureReading(List<String> in){
-        for(String val: in){
-            String[] dat = val.split(",");
-            DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
-            DateTime dt = formatter.parseDateTime(dat[0]);
-            TemperatureReading reading = new TemperatureReading(dt, dat[1]);
-            readings.add(reading);
-        }
-    }
-    */
 }
