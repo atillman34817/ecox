@@ -2,11 +2,13 @@
 This Sets the map tile - there is not a tile currently added. 
  */
 
-var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+var mymap = L.map( 'mapid', {
+    center: [20.0, 5.0],
+    minZoom: 2,
+    zoom: 2
+});
 
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    maxZoom: 18,
-    id: 'your.mapbox.project.id',
-    accessToken: 'your.mapbox.public.access.token'
-}).addTo(mymap);
+L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors | Tiles Courtesy of <a href="http://www.mapquest.com/" title="MapQuest" target="_blank">MapQuest</a> <img src="http://developer.mapquest.com/content/osm/mq_logo.png" width="16" height="16">',
+    subdomains: ['otile1','otile2','otile3','otile4']
+}).addTo( mymap );
