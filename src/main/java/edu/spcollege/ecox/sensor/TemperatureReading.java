@@ -6,6 +6,7 @@
 package edu.spcollege.ecox.sensor;
 
 import edu.spcollege.ecox.shared.Location;
+import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ public class TemperatureReading {
     @Id
     @GeneratedValue
     private long tempReadingId;
-    private DateTime timeOfReading;
+    private Timestamp timeOfReading;
     private Location locationOfReading;
     private double celsius;
     private double fahrenheit;
@@ -38,7 +39,7 @@ public class TemperatureReading {
             Location locationOfReading,
             double celsius) {
         
-        this.timeOfReading = timeOfReading;
+        this.timeOfReading = new Timestamp(timeOfReading.getMillis());
         this.locationOfReading = locationOfReading;
         this.celsius = celsius;
         this.fahrenheit = CtoF(celsius);
@@ -48,7 +49,7 @@ public class TemperatureReading {
         return tempReadingId;
     }
 
-    public DateTime getTimeOfReading() {
+    public Timestamp getTimeOfReading() {
         return timeOfReading;
     }
 
