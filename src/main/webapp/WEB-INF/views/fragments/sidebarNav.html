@@ -1,4 +1,6 @@
 <!-- Sidebar Navigation fragment -->
+
+<!-- Original sidebar 
 <div  class="col-sm-3 col-md-2 sidebar" th:fragment="sidebarNav">
     <ul class="nav nav-sidebar">
         <li class="active"><a href="/homeSignedIn" th:href="@{/homeSignedIn}" >Dashboard<span class="sr-only">(current)</span></a></li>
@@ -7,5 +9,19 @@
         <li><a href="#">Analytics</a></li>
         <li><a href="#">Export</a></li>
     </ul>
-</div>    
+</div>  
+-->
+<!-- Vertical Button group to toggle dashboard <div> -->
+<div  class=" col-sm-2 col-md-2 col-md-offset-1 btn-group-vertical sidebar" th:fragment="sidebarNav">
+    <ul class="nav nav-sidebar">
+        <li><button class="btn  btn-success  btn-lg btn-block" data-toggle="collapse" data-target="#mapid">Sensor Map</button></li><br>
+        <li><button class="btn  btn-success btn-lg btn-block" data-toggle="collapse" data-target="#images">Images</button></li><br>
+        <li><button class="btn  btn-success btn-lg btn-block" data-toggle="collapse" data-target="#fileUpload">File Upload</button></li><br>
+        <li><button class="btn  btn-success btn-lg btn-block" data-toggle="collapse" data-target="#tables">Tables</button></li><br>
+        <li><button class="btn  btn-success btn-lg btn-block" data-toggle="collapse" data-target="#graphs">Graphs</button></li><br>
+        <li><button class="btn  btn-success btn-lg btn-block" data-toggle="collapse" data-target="#charts">Charts</button></li><br>
+    </ul>
     
+</div>   
+
+>
