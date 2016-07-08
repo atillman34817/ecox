@@ -33,11 +33,11 @@
                     </form>
                     -->
                         <!-- upload with multiple files               -->
-                    <form modelAttribute="uploadForm" method="POST" th:action="@{/upload}" th:object="${uploadForm}" enctype="multipart/form-data">                     
+                    <form  modelAttribute="uploadForm" method="POST" th:action="@{/upload}" th:object="${uploadForm}" enctype="multipart/form-data">                     
      
-                        Files to upload: <input th:field="*{files}" type="file" multiple="multiple"/><br />      
+                        Files to upload: <input  th:field="*{files}" type="file" multiple="multiple"/><br />      
    
-                        <input type="submit" value="Upload">
+                        <input class="btn-primary btn-lg" type="submit" value="Upload">
           
                     </form>
                         
