@@ -37,9 +37,6 @@ public class FileUploadController {
     public String importFile(@ModelAttribute("uploadForm") FileUploadForm fileUploads, Model model) throws IOException {
         String pageTitle = "Upload file";
 
-        String contentType;
-        
-        contentType = fileUploads.getFiles()[0].getContentType();
         try {
             UploadStrategy strategy = uploadStrategy.create(fileUploads.getFiles()[0].getContentType());
             model.addAttribute("map", strategy.upload(fileUploads));

@@ -39,9 +39,11 @@ public class TemperatureUploadStrategy implements UploadStrategy {
             try {
                 readings = reader.read(temperatureFile.getInputStream());
                 for (TemperatureReading reading : readings) {
-                        temperatureReadingService.save(reading);
+                        temperatureReadingService.save(reading);                  
                 }
+                fileStatus.put(temperatureFile.getOriginalFilename(), Boolean.TRUE);
             } catch (Exception ex) {
+                fileStatus.put(temperatureFile.getOriginalFilename(), Boolean.FALSE);
                 Logger.getLogger(TemperatureUploadStrategy.class.getName()).log(Level.SEVERE, null, ex);
                 ex.printStackTrace();
             }
