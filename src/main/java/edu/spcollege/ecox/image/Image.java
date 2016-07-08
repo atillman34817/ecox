@@ -65,6 +65,7 @@ public class Image implements Serializable {
         return testConclusion;
     }
 
+    /*
     @Override
     public int hashCode() {
         int hash = 3;
@@ -72,7 +73,8 @@ public class Image implements Serializable {
         hash = 7 * hash + this.timestamp.hashCode();
         return hash;
     }
-
+    */
+    
     public byte[] getBytes() {
         return bytes;
     }
