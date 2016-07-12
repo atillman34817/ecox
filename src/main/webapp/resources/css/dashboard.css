@@ -80,32 +80,28 @@ body {
   margin-top: 0;
 }
 
-
-/*
- * Placeholder dashboard ideas
- */
-
-.placeholders {
-  margin-bottom: 30px;
-  text-align: center;
-}
-.placeholders h4 {
-  margin-bottom: 0;
-}
-.placeholder {
-  margin-bottom: 20px;
-}
-.placeholder img {
-  display: inline-block;
-  border-radius: 50%;
-}
-
 #mapid { height: 400px; }
 
-/*
- * Verticle button list
-*/
+#images {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
-.btn {
-    
+img {
+    width:150px;
+    height:150px;
+    padding: 10px 10px 10px 10px;
+}
+
+#table {
+    height: 500px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+#graphs {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
 }
