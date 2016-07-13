@@ -33,12 +33,19 @@
                 <div class="col-sm-12 col-md-10 col-md-offset-2 main">
 
                     <!-- Import Map-->
-                    <div id="sensorMap"></div>
-
-                    <h2 class="sub-header">Table</h2>
-                    <div id="tables" class="collapse in">
+                    <div id="sensorMap" class="collapse in"></div>
+                    
+                    <div id="imagesDiv"> 
+                        <div id="images" class="image-resposive collapse"> 
+                            <h2 class="sub-header">Images</h2>
+                            <img class="thumb" th:each="image : ${imageStrings}" th:src="@{'data:image/jpeg;base64,'+${image}}"/>
+                        </div>   
+                    </div>
+                    
+                    
+                    <div id="tables" class="collapse">
                         <div class="table-responsive">
-
+                            <h2 class="sub-header">Table</h2>
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -167,22 +174,9 @@
                         </div>
 
                     </div>  
-                    <h2 class="sub-header">Graphs</h2>
+                    
                     <div id="graphs" class="collapse in">
-
-                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
-                            Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
-                            sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. 
-                            Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed,
-                            commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros
-                            ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar
-                            facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, 
-                            eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-                            porttitor, facilisis luctus, metus</p>
-                    </div>
-                    <h2 class="sub-header">Charts</h2>
-                    <div id="charts"class="collapse in" >
-
+                    <h2 class="sub-header">Graphs</h2>
                         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
                             Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero
                             sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. 
