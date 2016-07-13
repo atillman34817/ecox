@@ -10,7 +10,7 @@
 
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="fragments/headerNotSignedIn :: headerNotSignedIn"></div>
     <br/>
     <form class="form-horizontal" role="form" action="#" method="post" th:action="@{/authenticate}">
     <th:block th:if="${param.error != null}">
