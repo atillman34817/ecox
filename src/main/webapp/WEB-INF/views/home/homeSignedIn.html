@@ -38,7 +38,9 @@
                     <div id="imagesDiv"> 
                         <div id="images" class="image-resposive collapse"> 
                             <h2 class="sub-header">Images</h2>
+                            <div id='thumbs'>
                             <img class="thumb" th:each="image : ${imageStrings}" th:src="@{'data:image/jpeg;base64,'+${image}}"/>
+                            </div>
                         </div>   
                     </div>
                     
@@ -46,6 +48,7 @@
                     <div id="tables" class="collapse">
                         <div class="table-responsive">
                             <h2 class="sub-header">Table</h2>
+                            <div id="dataTable">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -171,6 +174,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
 
                     </div>  

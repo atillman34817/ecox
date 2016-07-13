@@ -106,28 +106,26 @@ body {
     margin: 1%;
 }
 
-#sensorMap { height: 400px; }
-
-/*
- * Verticle button list
-*/
-
-.btn {
-    
+#sensorMap { 
+    height: 400px; 
 }
 
-/* for affixing sidebar
-@media (min-width: 979px) {
-  .nav-sidebar.affix-top {
-    position: static;
-  	margin-top:30px;
-  	width:228px;
-  }
-  
-  .nav-sidebar.affix {
-    position: fixed;
-    top:70px;
-    width:228px;
-  }
+#thumbs {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#dataTable {
+    height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+/* not needed while there's only one graph'
+#graphs {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 */
