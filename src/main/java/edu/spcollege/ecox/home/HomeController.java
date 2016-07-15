@@ -61,8 +61,6 @@ public class HomeController {
         }
         model.addAttribute("temperatureReadings", temperatureReadings);
 
-        String value = "tesing";
-        model.addAttribute("value", value);
         return "home/homeSignedIn";
 
     }
