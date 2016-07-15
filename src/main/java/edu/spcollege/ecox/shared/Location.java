@@ -72,4 +72,11 @@ public class Location implements Serializable {
     public float getLongtitude() {
         return longtitude;
     }
+
+    @Override
+    public String toString() {
+        return "latitude=" + latitude + ", longtitude=" + longtitude;
+    }
+    
+    
 }

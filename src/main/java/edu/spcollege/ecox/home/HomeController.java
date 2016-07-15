@@ -2,6 +2,8 @@ package edu.spcollege.ecox.home;
 
 import edu.spcollege.ecox.image.Image;
 import edu.spcollege.ecox.image.ImageService;
+import edu.spcollege.ecox.sensor.TemperatureReading;
+import edu.spcollege.ecox.sensor.TemperatureReadingService;
 import edu.spcollege.ecox.shared.Location;
 import java.io.FileNotFoundException;
 import java.security.Principal;
@@ -25,6 +27,9 @@ public class HomeController {
 
     @Autowired
     ImageService imageService;
+    
+    @Autowired
+    TemperatureReadingService temperatureReadingService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Principal principal) {
@@ -44,6 +49,20 @@ public class HomeController {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
+        
+        List<TemperatureReading> temperatureReadings = new ArrayList<>();     
+        for (int i=0; i<20; i++) {
+            try {
+                temperatureReadings.add(temperatureReadingService.findById((long)i));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+            }
+        }
+        model.addAttribute("temperatureReadings", temperatureReadings);
+
+        String value = "tesing";
+        model.addAttribute("value", value);
         return "home/homeSignedIn";
 
     }

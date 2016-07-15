@@ -22,7 +22,8 @@ public class UploadStrategyFactory {
     private TemperatureUploadStrategy temperatureUploadStrategy;
     
     public UploadStrategy create(String fileExtension){
-        if (fileExtension.equalsIgnoreCase("image/jpeg"))
+        if (fileExtension.equalsIgnoreCase("image/jpeg") 
+                || fileExtension.equalsIgnoreCase("image/png"))
             return imageStrategy;
         if (fileExtension.equalsIgnoreCase("application/octet-stream"))
             return temperatureUploadStrategy;
