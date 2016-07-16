@@ -34,7 +34,6 @@ public class TemperatureReaderTest {
     
     @Test
     public void testRead() {
-        // TODO: Test failing, see TemperatureReader
         List<TemperatureReading> tempReadings = temperatureReader.read(stream);
     }
 }

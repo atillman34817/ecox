@@ -38,10 +38,6 @@ public class TemperatureReader implements Reader<TemperatureReading> {
 
             for(String val: row) {
                 String[] column = val.split(",");
-                /**
-                 * Test failing at this line. Suspect that String[] column isn't
-                 * being created with an array of columns for each row properly.
-                 */
                 DateTime dateTime = dtFormatter.parseDateTime(column[0]);
                 float latitude = Float.parseFloat(column[1]);
                 float longitude = Float.parseFloat(column[2]);

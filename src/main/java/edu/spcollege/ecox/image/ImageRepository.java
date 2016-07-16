@@ -25,5 +25,4 @@ public interface ImageRepository extends JpaRepository<Image, Long>{
     // naming scheme (see Spring-Data documentation)
     public List<Image> findByTimestampBetween(long startTime, long endTime);
     public List<Image> findByLocation(Location location);
-    //Image findOneByLocation(Location location);
 }

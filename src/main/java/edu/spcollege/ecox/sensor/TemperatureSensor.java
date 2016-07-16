@@ -25,7 +25,7 @@ public class TemperatureSensor {
     @GeneratedValue
     private long tempSensorId;
     private String name;
-    private Location currentLocation;
+    private Location lastLocation;
     
     @OneToMany(targetEntity=TemperatureReading.class, mappedBy="temperatureSensor")
     private List<TemperatureReading> readings;
@@ -36,7 +36,7 @@ public class TemperatureSensor {
     
     public TemperatureSensor(String name, Location location){
         this.name = name;
-        this.currentLocation = location;
+        this.lastLocation = location;
         readings = new ArrayList<>();
     }
     
@@ -56,11 +56,11 @@ public class TemperatureSensor {
         this.name = name;
     }
 
-    public Location getCurrentLocation() {
-        return currentLocation;
+    public Location getLastLocation() {
+        return lastLocation;
     }
 
-    public void setCurrentLocation(Location currentLocation) {
-        this.currentLocation = currentLocation;
+    public void setLastLocation(Location currentLocation) {
+        this.lastLocation = currentLocation;
     }
 }

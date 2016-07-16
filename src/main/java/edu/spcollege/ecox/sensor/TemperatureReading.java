@@ -24,8 +24,8 @@ public class TemperatureReading {
     @Id
     @GeneratedValue
     private long tempReadingId;
-    private Timestamp timeOfReading;
-    private Location locationOfReading;
+    private Timestamp timestamp;
+    private Location location;
     private double celsius;
     private double fahrenheit;
     
@@ -35,12 +35,12 @@ public class TemperatureReading {
     
     public TemperatureReading(){}
     
-    public TemperatureReading(DateTime timeOfReading, 
-            Location locationOfReading,
+    public TemperatureReading(DateTime timestamp, 
+            Location location,
             double celsius) {
         
-        this.timeOfReading = new Timestamp(timeOfReading.getMillis());
-        this.locationOfReading = locationOfReading;
+        this.timestamp = new Timestamp(timestamp.getMillis());
+        this.location = location;
         this.celsius = celsius;
         this.fahrenheit = CtoF(celsius);
     }
@@ -49,12 +49,12 @@ public class TemperatureReading {
         return tempReadingId;
     }
 
-    public Timestamp getTimeOfReading() {
-        return timeOfReading;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public Location getLocationOfReading() {
-        return locationOfReading;
+    public Location getLocation() {
+        return location;
     }
 
     public double getCelsius() {

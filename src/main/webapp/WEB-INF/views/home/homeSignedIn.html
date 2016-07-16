@@ -57,11 +57,8 @@
                                         <th>Fahrenheit</th>
                                     </tr>
                                     <tr th:each="temperatureReading : ${temperatureReadings}">
-                                        <th th:text="${temperatureReading.timeOfReading}">time of reading</th>
-                                        <th th:text=${#strings.toString(temperatureReading.locationOfReading)} >location of reading</th>
-                                        <!--
-                                        <th><div th:text="${temperatureReading.locationOfReading.latitude}">latitude</div><div th:text="${temperatureReading.locationOfReading.longtitude}">longtitude</div></th>
-                                        -->
+                                        <th th:text="${temperatureReading.timestamp}">time of reading</th>
+                                        <th th:text=${#strings.toString(temperatureReading.location)} >location of reading</th>
                                         <th th:text="${temperatureReading.celsius}">celsius</th>
                                         <th th:text="${temperatureReading.fahrenheit}">fahrenheit</th>
                                     </tr>
@@ -217,9 +214,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <!-- Import dashboardMap.js-->
         <script type="text/javascript" th:src="@{resources/js/dashboardMap.js}"></script>
-        <!-- Google Maps
-            TODO: Replace the temp API key with one managed by the project team. -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACc87LoKvIytp0wFrKhDotCeGQBUvSsfQ&callback=initMap"
+        <!-- Google Maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvorM7q0zaDdbYX6psDMXQWrETV0s9V60&callback=initMap"
         async defer></script>
         <!-- Import dashboard.js-->
         <script type="text/javascript" th:src="@{resources/js/dashboard.js}"></script>
