@@ -6,9 +6,11 @@
 package edu.spcollege.ecox.sensor;
 
 import edu.spcollege.ecox.sensor.TemperatureReader;
+import edu.spcollege.ecox.shared.Location;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.util.List;
+import junit.framework.Assert;
 import org.apache.commons.io.input.ReaderInputStream;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +35,18 @@ public class TemperatureReaderTest {
     }
     
     @Test
-    public void testRead() {
+    public void testRead_Returns_CorrectNumberOfTempReadings() {
         List<TemperatureReading> tempReadings = temperatureReader.read(stream);
+        Assert.assertEquals(tempReadings.size(), 3);
+    }
+    
+    @Test
+    public void testRead_ParsesReadingCorrectly(){
+        List<TemperatureReading> tempReadings = temperatureReader.read(stream);
+        TemperatureReading first = tempReadings.get(0);
+        Location location = first.getLocation();
+        Assert.assertEquals(location.getLatitude(), 27.812295);
+        Assert.assertEquals(location.getLongtitude(), -82.786255);
+        Assert.assertEquals(first.getCelsius(), 26.980);
     }
 }
