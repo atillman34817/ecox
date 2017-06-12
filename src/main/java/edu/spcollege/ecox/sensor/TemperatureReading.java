@@ -26,7 +26,7 @@ public class TemperatureReading {
     private long tempReadingId;
     private Timestamp timestamp;
     private Location location;
-    private double celsius;
+    private String celsius;
     private double fahrenheit;
     
     @ManyToOne
@@ -37,12 +37,12 @@ public class TemperatureReading {
     
     public TemperatureReading(DateTime timestamp, 
             Location location,
-            double celsius) {
+            String celsius) {
         
         this.timestamp = new Timestamp(timestamp.getMillis());
         this.location = location;
         this.celsius = celsius;
-        this.fahrenheit = CtoF(celsius);
+        this.fahrenheit = CtoF(Double.parseDouble(celsius));
     }
 
     public long getTempReadingId() {
@@ -57,7 +57,7 @@ public class TemperatureReading {
         return location;
     }
 
-    public double getCelsius() {
+    public String getCelsius() {
         return celsius;
     }
 
