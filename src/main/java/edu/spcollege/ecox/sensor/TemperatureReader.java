@@ -39,9 +39,9 @@ public class TemperatureReader implements Reader<TemperatureReading> {
             for(String val: row) {
                 String[] column = val.split(",");
                 DateTime dateTime = dtFormatter.parseDateTime(column[0]);
-                float latitude = Float.parseFloat(column[1]);
-                float longitude = Float.parseFloat(column[2]);
-                float celsius = Float.parseFloat(column[3]);
+                String latitude = column[1];
+                String longitude = column[2];
+                String celsius = column[3];
                 Location location = new Location(latitude, longitude);
                 TemperatureReading tempReading = 
                         new TemperatureReading(dateTime, location, celsius);
