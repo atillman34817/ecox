@@ -45,8 +45,8 @@ public class TemperatureReaderTest {
         List<TemperatureReading> tempReadings = temperatureReader.read(stream);
         TemperatureReading first = tempReadings.get(0);
         Location location = first.getLocation();
-        Assert.assertEquals(location.getLatitude(), 27.812295);
-        Assert.assertEquals(location.getLongtitude(), -82.786255);
-        Assert.assertEquals(first.getCelsius(), 26.980);
+        Assert.assertEquals(location.getLatitude(), "27.812295");
+        Assert.assertEquals(location.getlongitude(), "-82.786255");
+        Assert.assertEquals(first.getCelsius(), "26.980"); 
     }
 }
