@@ -21,22 +21,22 @@ public class Location implements Serializable {
     @Id
     @GeneratedValue
     private long id;
-    private float latitude;
-    private float longtitude;
+    private String latitude;
+    private String longitude;
 
     public Location() {
     }
 
-    public Location(float latitude, float longtitude) {
+    public Location(String latitude, String longitude) {
         this.latitude = latitude;
-        this.longtitude = longtitude;
+        this.longitude = longitude;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 37 * hash + Float.floatToIntBits(this.latitude);
-        hash = 37 * hash + Float.floatToIntBits(this.longtitude);
+        hash = 37 * hash + Float.floatToIntBits(Integer.parseInt(this.latitude));
+        hash = 37 * hash + Float.floatToIntBits(Integer.parseInt(this.longitude));
         return hash;
     }
 
@@ -52,10 +52,10 @@ public class Location implements Serializable {
             return false;
         }
         final Location other = (Location) obj;
-        if (Float.floatToIntBits(this.latitude) != Float.floatToIntBits(other.latitude)) {
+        if (Float.floatToIntBits(Integer.parseInt(this.latitude)) != Float.floatToIntBits(Integer.parseInt(other.latitude))) {
             return false;
         }
-        if (Float.floatToIntBits(this.longtitude) != Float.floatToIntBits(other.longtitude)) {
+        if (Float.floatToIntBits(Integer.parseInt(this.longitude)) != Float.floatToIntBits(Integer.parseInt(other.longitude))) {
             return false;
         }
         return true;
@@ -65,17 +65,17 @@ public class Location implements Serializable {
         return this.id;
     }
 
-    public float getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public float getLongtitude() {
-        return longtitude;
+    public String getlongitude() {
+        return longitude;
     }
 
     @Override
     public String toString() {
-        return "latitude=" + latitude + ", longtitude=" + longtitude;
+        return "latitude=" + latitude + ", longitude=" + longitude;
     }
     
     
